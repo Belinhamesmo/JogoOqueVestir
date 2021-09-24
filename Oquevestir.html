@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+
+	<div id="topo">
+		<h1>O que vestir?</h1>
+		<h2 id="perguntas">Responda com o look correto</h2><br />
+
+		<div id="qntperguntas">
+			Para ganhar prêmio, acerte no mínimo <span id="dificuldade0">3 de 6</span><span id="dificuldade1">4 de 7</span> <span
+				id="dificuldade2">5 de 8</span> <span id="dificuldade3">6 de 9</span> perguntas!
+		</div>
+
+
+		<div id="div2">
+			<div id="dificuldade">Escolha a dificuldade do jogo</div></br>
+			<div id="seta1">-></div>
+			<div onclick="seta1js()" id="muitofacil">Muito Fácil</div>
+
+			<div id="seta2">-></div>
+			<div onclick="seta2js()" id="facil">Fácil</div>
+
+			<div id="seta3">-></div>
+			<div onclick="seta3js()" id="medio">Médio</div>
+
+			<div id="seta4">-></div>
+			<div onclick="seta4js()" id="dificil">Difícil</div>
+		</div>
+		<button id="botao" onclick="perguntaescolhida()">Começar</button>
+	</div>
+	<br />
+
+	
+	<div onload="teladepremio()" onclick="teladepremio()" id="div1">
+		<div class="cards">
+			<img id="img1" onclick="pacorabanne()" src="img/pacorabanne.png" />
+			<img id="img4" onclick="valentino()" src="img/valentino.png">
+			<img id="img6" onclick="courreges()" src="img/courreges.png">
+			<img id="modelo" src="img/modelo.jpg">
+			<img id="img2" onclick="yves()" src="img/yves.png">
+			<img id="img3" onclick="cardin()" src="img/pierrecardin.png">
+			<img id="img5" onclick="balmain()" src="img/balmain.png">
+		</div>
+		
+
+
+		<p>Quantidade de tecido:</p>
+		<img id="tecido1" src="img/tecido.png">
+		<img id="tecido2" src="img/tecido.png">
+		<img id="tecido3" src="img/tecido.png">
+		<img id="tecido4" src="img/tecido.png">
+		<img id="tecido5" src="img/tecido.png">
+		<img id="tecido6" src="img/tecido.png">
+		<img id="tecido7" src="img/tecido.png">
+		<img id="tecido8" src="img/tecido.png">
+		<img id="tecido9" src="img/tecido.png">
+		<img id="tecido10" src="img/tecido.png">
+
+
+
+		<br /><br />
+		<div id="dificuldademuitofacil0" >
+		Tempo: <span id="countdown">90</span> segundos </div>
+		<div id="dificuldadediferentede0">
+		Tempo: <span id="countdown2">60</span> segundos </div>
+		<br>
+		<img id="yveslogo" src="img/yveslogo.jpg">
+		<img id="pacologo" src="img/pacorabannelogo.jpg">
+		<img id="cardinlogo" src="img/cardinlogo.jpg">
+		<img id="valentinologo" src="img/valentinologo.jpg">
+		<img id="balmainlogo" src="img/balmainlogo.jpg">
+		<img id="courregeslogo" src="img/courregeslogo.jpg">
+	</div>
+
+
+	<div id="divperdeu">
+
+		<h1>Gastou todos os tecidos. Perdeu o jogo!</h1>
+
+	</div>
+
+	<div id="divperdeutempo">
+
+		<h1>Acabou o tempo. Perdeu o jogo!</h1>
+
+	</div>
+
+	<div id="divouro">
+		<h1>Ganhou! Troféu de ouro!</h1></br>
+		<img src="img/ouro.jpg">
+
+	</div>
+
+	<div id="divprata">
+		<h1>Ganhou! Troféu de prata!</h1></br>
+		<img src="img/prata.jpg">
+	</div>
+
+	<div id="divbronze">
+		<h1>Ganhou! Troféu de bronze!</h1></br>
+		<img src="img/bronze.jpg">
+	</div>
+
+
+</body>
+
+<head>
+	<h1>
+		<title>O que vestir?</title>
+	</h1>
+	<meta charset="utf-8" />
+	<meta name="description" content="Jogo O que vestir?" />
+	
+	<link href="css/estilo.css" type="text/css" rel="stylesheet">
+
+	
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+	<script type="text/javascript">
+
+
+	var perguntapacorabanne = false;
+	var perguntayves = false;
+	var perguntacardin = false;
+	var perguntavalentino = false;
+	var perguntabalmain = false;
+	var perguntacourreges = false;
+
+	var pontuacao = 0;
+
+
+	var perguntasrespondidas = 0;
+
+	//Variáveis para temporizador e contagem
+	let temporizador;
+	let tempoAtual = 60
+	let contagemRegressiva;
+
+
+
+
+	var i;
+	var a;
+	var c;
+
+	//Variável para a dificuldade do jogo
+	var dificuldade;
+
+	//Variável de cada estilista
+	//Vetores para cada estilista
+
+	var paco = 0;
+	var vetPacorabanne = ["img/pacorabanne.png", "img/pacorabanne2.png", "img/pacorabanne3.png", "img/pacorabanne4.png"]
+	var vetPacorabannemodelo = ["img/modelopacorabanne.jpg", "img/modelopacorabanne2.jpg", "img/modelopacorabanne3.jpg", "img/modelopacorabanne4.jpg"]
+
+	var yvess = 0;
+	var vetYves = ["img/yves.png","img/yves2.png", "img/yves3.png", "img/yves4.png"]
+	var vetYvesmodelo = ["img/modeloyves.jpg", "img/modeloyves2.jpg", "img/modeloyves3.jpg", "img/modeloyves4.jpg"]
+
+	var pierree = 0;
+	var vetPierre = ["img/pierrecardin.png", "img/pierrecardin2.png", "img/pierrecardin3.png", "img/pierrecardin4.png"]
+	var vetPierremodelo = ["img/modelopierrecardin.jpg", "img/modelopierrecardin2.jpg", "img/modelopierrecardin3.jpg", "img/modelopierrecardin4.jpg"]
+
+
+	var valentinoo = 0;
+	var vetValentino = ["img/valentino.png", "img/valentino2.png", "img/valentino3.png", "img/valentino4.png"]
+	var vetValentinomodelo = ["img/modelovalentino.jpg", "img/modelovalentino2.jpg", "img/modelovalentino3.jpg", "img/modelovalentino4.jpg"]
+
+	var balmainn = 0;
+	var vetBalmain = ["img/balmain.png","img/balmain2.png", "img/balmain3.png", "img/balmain4.png"]
+	var vetBalmainmodelo = ["img/modelobalmain.jpg", "img/modelobalmain2.jpg", "img/modelobalmain3.jpg", "img/modelobalmain4.jpg"]
+
+	var courregess = 0;
+	var vetCourreges = ["img/courreges.png","img/courreges2.png", "img/courreges3.png", "img/courreges4.png"]
+	var vetCourregesmodelo = ["img/modelocourreges.jpg", "img/modelocourreges2.jpg", "img/modelocourreges3.jpg", "img/modelocourreges4.jpg"]
+
+	//Setas para identificar dificuldade escolhida
+
+	function seta1js() {
+		seta1.style.display = "inline-block"
+
+		seta2.style.display = "none"
+		seta3.style.display = "none"
+		seta4.style.display = "none"
+	}
+
+	function seta2js() {
+		seta2.style.display = "inline-block"
+
+		seta1.style.display = "none"
+		seta3.style.display = "none"
+		seta4.style.display = "none"
+	}
+
+	function seta3js() {
+		seta3.style.display = "inline-block"
+
+
+		seta1.style.display = "none"
+		seta2.style.display = "none"
+		seta4.style.display = "none"
+	}
+
+	function seta4js() {
+		seta4.style.display = "inline-block"
+
+
+		seta1.style.display = "none"
+		seta2.style.display = "none"
+		seta3.style.display = "none"
+	}
+
+	//Funções de cada dificuldade
+
+	function muitofacil() {
+		dificuldade = 0
+		tempoAtual = 90
+		dificuldademuitofacil0.style.display = "block"
+		dificuldadediferentede0.style.display = "none"
+
+
+	}
+
+	function facil() {
+		dificuldade = 1
+		tempoAtual = 60
+		dificuldademuitofacil0.style.display = "none"
+		dificuldadediferentede0.style.display = "block"
+
+
+	}
+
+	function medio() {
+		dificuldade = 2
+		tempoAtual = 60
+		dificuldademuitofacil0.style.display = "none"
+		dificuldadediferentede0.style.display = "block"
+
+
+
+	}
+
+	function dificil() {
+		dificuldade = 3
+		tempoAtual = 60
+		dificuldademuitofacil0.style.display = "none"
+		dificuldadediferentede0.style.display = "block"
+
+
+	}
+
+
+
+	//Strings com perguntas do jogo
+
+	let stringsperguntas = [["Qual a roupa do estilista Paco Rabanne?"],
+	["Qual a roupa do estilista Yves Saint Laurent?"],
+	["Qual a roupa do estilista Pierre Cardin?"],
+	["Qual a roupa do estilista Valentino?"],
+	["Qual a roupa do estilista Pierre Balmain?"],
+	["Qual a roupa do estilista André Courrèges?"]];
+
+	//Divs escondidas (setas do menu inicial, telas de prêmio e logos)
+
+	div1.style.display = "none";
+	qntperguntas.style.display = "none";
+	seta1.style.display = "none";
+	seta2.style.display = "none";
+	seta3.style.display = "none";
+	seta4.style.display = "none";
+
+	yveslogo.style.display = "none";
+	pacologo.style.display = "none";
+	cardinlogo.style.display = "none";
+	valentinologo.style.display = "none";
+	balmainlogo.style.display = "none";
+	courregeslogo.style.display = "none";
+
+	divperdeu.style.display = "none";
+	divperdeutempo.style.display = "none"
+	divouro.style.display = "none";
+	divprata.style.display = "none";
+	divbronze.style.display = "none";
+
+	//Função que escolhe a pergunta ao clicar no botão, esconde o botão e aciona a dificuldade escolhida e o temporizador
+
+	function perguntaescolhida() {
+
+		i = Math.floor(Math.random() * 6)
+		escolheapergunta = document.getElementById('perguntas')
+		escolheapergunta.innerHTML = stringsperguntas[i]
+		botao.style.display = "none";
+		div2.style.display = "none";
+		qntperguntas.style.display = "block";
+		div1.style.display = "block";
+
+
+
+
+		temporizador = window.setInterval(contandoRegressivamente, 1000)
+		if (seta1.style.display == "inline-block") {
+			dificuldade1.style.display = "none";
+			dificuldade2.style.display = "none";
+			dificuldade3.style.display = "none";
+			muitofacil()
+		}
+
+		if (seta2.style.display == "inline-block") {
+			dificuldade0.style.display = "none";
+			dificuldade2.style.display = "none";
+			dificuldade3.style.display = "none";
+			facil()
+		}
+
+		if (seta3.style.display == "inline-block") {
+			dificuldade0.style.display = "none";
+			dificuldade1.style.display = "none";
+			dificuldade3.style.display = "none";
+			medio()
+		}
+
+		if (seta4.style.display == "inline-block") {
+			dificuldade0.style.display = "none";
+			dificuldade1.style.display = "none";
+			dificuldade2.style.display = "none";
+			dificil()
+		}
+
+
+
+	}
+
+	//Função do temporizador
+
+	function contandoRegressivamente() {
+
+
+
+		document.getElementById("countdown").textContent = tempoAtual;
+		document.getElementById("countdown2").textContent = tempoAtual;
+		tempoAtual = tempoAtual - 1;
+
+		//Se o tempo for igual a 0, jogo vai para a tela de prêmio ou derrota
+		if (tempoAtual == 0) {
+			teladepremio()
+		}
+
+
+	}
+
+	//Função que se aciona quando clica em um look do estilista Paco Rabanne
+	
+	function pacorabanne() {
+
+
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+		//Se a resposta for incorreta:
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 0) {
+			alert("Errou!")
+		}
+
+
+		//Resposta correta:
+
+		if (i == 0) {
+			perguntapacorabanne = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntapacorabanne) {
+
+
+
+
+			if (dificuldade == 0) {
+
+				document.getElementById("modelo").src = vetPacorabannemodelo[paco]
+				paco=(paco+1)%2  
+				document.getElementById("img1").src = vetPacorabanne[paco]
+
+			}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetPacorabannemodelo[paco]
+				paco=(paco+1)%2
+				document.getElementById("img1").src = vetPacorabanne[paco]
+
+				
+				
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetPacorabannemodelo[paco]
+				paco=(paco+1)%3
+				document.getElementById("img1").src = vetPacorabanne[paco]
+
+		
+
+			}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetPacorabannemodelo[paco]
+				paco=(paco+1)%4
+				document.getElementById("img1").src = vetPacorabanne[paco]
+
+				
+			}
+
+			pacologo.style.display = "inline-block"
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+
+		tecido()
+
+
+		//Sorteia nova pergunta
+
+
+
+		sorteiaPergunta()
+
+
+
+
+
+	}
+
+	function yves() {
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 1) {
+			alert("Errou! Perdeu tecido")
+		}
+
+		//Resposta correta
+
+		if (i == 1) {
+			perguntayves = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntayves) {
+
+
+
+			if (dificuldade == 0) {
+
+			
+				document.getElementById("modelo").src = vetYvesmodelo[yvess]
+				yvess=(yvess+1)%2
+				document.getElementById("img2").src = vetYves[yvess]
+
+							}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetYvesmodelo[yvess]
+				yvess=(yvess+1)%2
+				document.getElementById("img2").src = vetYves[yvess]
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetYvesmodelo[yvess]
+				yvess=(yvess+1)%3
+				document.getElementById("img2").src = vetYves[yvess]
+
+						}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetYvesmodelo[yvess]
+				yvess=(yvess+1)%4
+				document.getElementById("img2").src = vetYves[yvess]
+
+				
+			}
+
+			yveslogo.style.display = "inline-block"
+
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+		tecido()
+
+		//Sorteia nova pergunta
+
+		sorteiaPergunta()
+
+
+
+
+
+
+	}
+
+	function cardin() {
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 2) {
+			alert("Errou! Perdeu tecido")
+		}
+
+		//Resposta correta
+
+		if (i == 2) {
+			perguntacardin = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntacardin) {
+
+
+
+				if (dificuldade == 0) {
+
+				document.getElementById("modelo").src = vetPierremodelo[pierree]
+				pierree=(pierree+1)%2  
+				document.getElementById("img3").src = vetPierre[pierree]
+
+			}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetPierremodelo[pierree]
+				pierree=(pierree+1)%2
+				document.getElementById("img3").src = vetPierre[pierree]
+
+				
+				
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetPierremodelo[pierree]
+				pierree=(pierree+1)%3
+				document.getElementById("img3").src = vetPierre[pierree]
+
+		
+
+			}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetPierremodelo[pierree]
+				pierree=(pierree+1)%4
+				document.getElementById("img3").src = vetPierre[pierree]
+
+				
+			}
+
+			cardinlogo.style.display = "inline-block"
+
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+		tecido()
+
+		//Sorteia nova pergunta
+
+		sorteiaPergunta()
+
+
+
+
+	}
+	
+
+	function valentino() {
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 3) {
+			alert("Errou! Perdeu tecido")
+		}
+
+		//Resposta correta
+
+		if (i == 3) {
+			perguntavalentino = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntavalentino) {
+
+
+
+				if (dificuldade == 0) {
+
+				document.getElementById("modelo").src = vetValentinomodelo[valentinoo]
+				valentinoo=(valentinoo+1)%2  
+				document.getElementById("img4").src = vetValentino[valentinoo]
+
+			}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetValentinomodelo[valentinoo]
+				valentinoo=(valentinoo+1)%2
+				document.getElementById("img4").src = vetValentino[valentinoo]
+
+				
+				
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetValentinomodelo[valentinoo]
+				valentinoo=(valentinoo+1)%3
+				document.getElementById("img4").src = vetValentino[valentinoo]
+
+		
+
+			}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetValentinomodelo[valentinoo]
+				valentinoo=(valentinoo+1)%4
+				document.getElementById("img4").src = vetValentino[valentinoo]
+
+				
+			}
+
+			valentinologo.style.display = "inline-block"
+
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+		tecido()
+
+		//Sorteia nova pergunta
+
+		sorteiaPergunta()
+
+
+
+	}
+
+	function balmain() {
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 4) {
+			alert("Errou! Perdeu tecido")
+		}
+
+		//Resposta correta
+
+		if (i == 4) {
+			perguntabalmain = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntabalmain) {
+
+
+
+				if (dificuldade == 0) {
+
+				document.getElementById("modelo").src = vetBalmainmodelo[balmainn]
+				balmainn=(balmainn+1)%2  
+				document.getElementById("img5").src = vetBalmain[balmainn]
+
+			}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetBalmainmodelo[balmainn]
+				balmainn=(balmainn+1)%2
+				document.getElementById("img5").src = vetBalmain[balmainn]
+
+				
+				
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetBalmainmodelo[balmainn]
+				balmainn=(balmainn+1)%3
+				document.getElementById("img5").src = vetBalmain[balmainn]
+
+		
+
+			}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetBalmainmodelo[balmainn]
+				balmainn=(balmainn+1)%4
+				document.getElementById("img5").src = vetBalmain[balmainn]
+
+				
+			}
+
+
+			balmainlogo.style.display = "inline-block"
+
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+		tecido()
+		//Sorteia nova pergunta
+
+		sorteiaPergunta()
+
+
+
+	}
+
+	function courreges() {
+
+		var perguntapacorabanne = false;
+		var perguntayves = false;
+		var perguntacardin = false;
+		var perguntavalentino = false;
+		var perguntabalmain = false;
+		var perguntacourreges = false;
+
+		if (tecido1.style.display == "none") {
+			divperdeu.style.display = "block"
+			div1.style.display = "none"
+			topo.style.display = "none"
+
+		}
+
+		if (i != 5) {
+			alert("Errou! Perdeu tecido")
+		}
+
+		//Resposta correta
+
+		if (i == 5) {
+			perguntacourreges = true;
+			pontuacao = pontuacao + 1;
+		}
+
+		if (perguntacourreges) {
+
+
+			if (dificuldade == 0) {
+
+				document.getElementById("modelo").src = vetCourregesmodelo[courregess]
+				courregess=(courregess+1)%2  
+				document.getElementById("img6").src = vetCourreges[courregess]
+
+			}
+
+			else if (dificuldade == 1) {
+
+
+
+				document.getElementById("modelo").src = vetCourregesmodelo[courregess]
+				courregess=(courregess+1)%2
+				document.getElementById("img6").src = vetCourreges[courregess]
+
+				
+				
+			}
+
+			else if (dificuldade == 2) {
+
+				document.getElementById("modelo").src = vetCourregesmodelo[courregess]
+				courregess=(courregess+1)%3
+				document.getElementById("img6").src = vetCourreges[courregess]
+
+		
+
+			}
+
+			else if (dificuldade == 3) {
+
+				document.getElementById("modelo").src = vetCourregesmodelo[courregess]
+				courregess=(courregess+1)%4
+				document.getElementById("img6").src = vetCourreges[courregess]
+
+				
+			}
+
+			courregeslogo.style.display = "inline-block"
+
+		}
+
+		//Gasta tecido (quantidade de tecido diminui)
+
+		tecido()
+
+		//Sorteia nova pergunta
+
+		sorteiaPergunta()
+
+
+	}
+
+	//Sorteia nova pergunta
+
+	function sorteiaPergunta()
+	{
+		i = Math.floor(Math.random() * 6)
+
+		escolheapergunta = document.getElementById('perguntas')
+		escolheapergunta.innerHTML = stringsperguntas[i]
+	}
+
+	//Torna invisível algum tecido
+
+	function tecido(){
+	if (tecido2.style.display == "none") {
+			tecido1.style.display = "none"
+
+		}
+
+		if (tecido3.style.display == "none") {
+			tecido2.style.display = "none"
+
+		}
+
+		if (tecido4.style.display == "none") {
+			tecido3.style.display = "none"
+
+		}
+
+		if (tecido5.style.display == "none") {
+			tecido4.style.display = "none"
+
+		}
+
+		if (tecido6.style.display == "none") {
+			tecido5.style.display = "none"
+
+		}
+
+		if (tecido7.style.display == "none") {
+			tecido6.style.display = "none"
+
+		}
+
+		if (tecido8.style.display == "none") {
+			tecido7.style.display = "none"
+
+		}
+
+		if (tecido9.style.display == "none") {
+			tecido8.style.display = "none"
+
+		}
+
+		if (tecido10.style.display == "none") {
+			tecido9.style.display = "none"
+
+		}
+
+
+
+		tecido10.style.display = "none"
+	}
+
+	function teladepremio() {
+
+
+		if (stringsperguntas[i]) {
+			perguntasrespondidas = perguntasrespondidas + 1;
+		}
+
+		if (dificuldade == 0) {
+
+			if ( perguntasrespondidas >= 6 &&pontuacao == 6) {
+				divouro.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 6 &&(pontuacao == 5 ||  pontuacao == 4)) {
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+			else if (perguntasrespondidas >= 6 && pontuacao == 3) {
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba e não tem pontuação suficiente
+
+			else if (pontuacao < 3 && tempoAtual==0){
+				divperdeutempo.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 5 ou 4
+
+			else if (pontuacao == 5 && tempoAtual==0 || pontuacao == 4 && tempoAtual==0){
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 3
+
+			else if (pontuacao == 3 && tempoAtual==0){
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+		}
+
+		if (dificuldade == 1) {
+
+			if (perguntasrespondidas >= 7 && pontuacao == 7) {
+				divouro.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 7 && pontuacao == 6 || perguntasrespondidas >= 7 && pontuacao == 5) {
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 7 && pontuacao == 4) {
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+			//Se tempo acaba e não tem pontuação suficiente
+
+			else if (pontuacao < 4 && tempoAtual==0){
+				divperdeutempo.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 6 ou 5
+
+			else if (pontuacao == 6 && tempoAtual==0 || pontuacao == 5 && tempoAtual==0){
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 4
+
+			else if (pontuacao == 4 && tempoAtual==0){
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+		}
+
+		if (dificuldade == 2) {
+
+			if (perguntasrespondidas >= 8 && pontuacao == 8) {
+				divouro.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 8 && pontuacao == 7 || perguntasrespondidas >= 8 && pontuacao == 6) {
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 8 && pontuacao == 5) {
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba e não tem pontuação suficiente
+
+			else if (pontuacao < 5 && tempoAtual==0){
+				divperdeutempo.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 6 ou 7
+
+			else if (pontuacao == 6 && tempoAtual==0 || pontuacao == 7 && tempoAtual==0){
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 5
+
+			else if (pontuacao == 5 && tempoAtual==0){
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+		}
+
+		if (dificuldade == 3) {
+
+			if (perguntasrespondidas >= 9 && pontuacao == 9) {
+				divouro.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 9 && pontuacao == 8 || perguntasrespondidas >= 9 && pontuacao == 7) {
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			else if (perguntasrespondidas >= 9 && pontuacao == 6) {
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba e não tem pontuação suficiente
+
+			else if (pontuacao < 6 && tempoAtual==0){
+				divperdeutempo.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 8 ou 7
+
+			else if (pontuacao == 8 && tempoAtual==0 || pontuacao == 7 && tempoAtual==0){
+				divprata.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+
+			//Se tempo acaba mas já tinha acertado 6
+
+			else if (pontuacao == 6 && tempoAtual==0){
+				divbronze.style.display = "block"
+				div1.style.display = "none"
+				topo.style.display = "none"
+			}
+		}
+
+	}
+
+
+	</script>
+
+
+
+</head>
+
+
+
+
+
+
+</html>
