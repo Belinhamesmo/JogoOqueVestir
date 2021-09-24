@@ -1,1 +1,213 @@
-adsad
+body { 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+.cards img{
+    border: 2px solid black;
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.cards img:hover:not(#modelo){
+    cursor: pointer;
+    padding: 30px;
+    box-shadow:  5px 5px rgba(107, 58, 58, 0.452);
+}
+
+#modelo{
+    height: 300px;
+}
+
+#yveslogo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#pacologo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#cardinlogo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#valentinologo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#balmainlogo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#courregeslogo {
+    
+    display: inline-block;
+    text-align: center;
+}
+
+#div2 > *{
+    margin: 10px;
+}
+
+#div2 > *:hover:not(#dificuldade){
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+#botao{
+    margin: 10px;
+    padding: 5px 10px 10px;
+    background-color: cyan;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+#botao:hover{
+    background-color: rgb(101, 255, 152);
+    cursor: pointer;
+}
+
+#seta1 {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#seta2 {
+    
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#seta3 {
+    
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#seta4 {
+    
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#muitofacil {
+    
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: lightblue;
+    font-size: 20px;
+}
+
+#facil {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: green;
+    font-size: 20px;
+}
+
+#medio {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: orange;
+    font-size: 20px;
+}
+
+#dificil {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    color: red;
+    font-size: 20px;
+}
+
+
+#topo {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+
+#div1 {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+
+#divperdeu {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#divperdeutempo {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#divouro {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#divprata {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
+
+#divbronze {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: gray;
+    font-size: 20px;
+}
